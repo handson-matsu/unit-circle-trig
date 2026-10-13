@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>単位円で三角比マスター</title>
+<style>
+:root{--sin:#c33349;--cos:#2265bd;--tan:#18734e;--ink:#253347;--muted:#667489;--line:#dce3ec}*{box-sizing:border-box}body{margin:0;background:#f3f6fa;color:var(--ink);font-family:system-ui,-apple-system,"Hiragino Sans",sans-serif}button,input{font:inherit}button{cursor:pointer;min-height:44px;border:1px solid var(--line);border-radius:10px;background:white;color:var(--ink);padding:9px 13px}button:hover{background:#edf3fb}button:focus-visible,input:focus-visible{outline:3px solid #d49922;outline-offset:3px}button[aria-pressed=true]{background:#253d60;color:white;border-color:#253d60}header,main{max-width:1380px;margin:auto;padding:22px 28px}header{padding-bottom:12px}h1{font-size:clamp(23px,3vw,32px);margin:6px 0 8px}p{line-height:1.7;margin:6px 0}.eyebrow{font-size:13px;font-weight:700;letter-spacing:.1em;color:var(--muted)}.intro{color:var(--muted)}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:20px}.modes{display:flex;gap:8px;flex-wrap:wrap}.setting{display:flex;gap:8px;align-items:center;font-size:14px}input[type=checkbox]{width:20px;height:20px;accent-color:#253d60}.layout{display:grid;grid-template-columns:minmax(360px,.9fr) minmax(540px,1.2fr);gap:20px;align-items:start}.card{min-width:0;background:white;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 5px 20px #25334704}h2{font-size:19px;margin:0 0 12px}.heading{display:flex;justify-content:space-between;align-items:center}.angle{font-size:27px;font-weight:750}.graph{width:100%;display:block;aspect-ratio:1.25;touch-action:none;user-select:none;-webkit-user-select:none;border-radius:12px;background:#fafbfd}.graph text{font-family:system-ui,sans-serif;font-size:13px;fill:var(--ink)}.graph .sin{stroke:var(--sin)}.graph .cos{stroke:var(--cos)}.graph .tan{stroke:var(--tan)}.toggles{display:flex;gap:15px;flex-wrap:wrap;margin:14px 0}.toggles label{display:flex;align-items:center;gap:6px;font-weight:650}.sin-color{color:var(--sin)}.cos-color{color:var(--cos)}.tan-color{color:var(--tan)}.slider-label{display:flex;justify-content:space-between;font-size:14px;margin-top:14px}input[type=range]{width:100%;height:40px;accent-color:#253d60;touch-action:pan-y}.angles{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.angles button{padding:7px;font-size:15px}.values{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}.value{padding:12px 6px;background:#f5f7fa;text-align:center;border-radius:10px;border-top:3px solid}.value.sin-color{border-color:var(--sin)}.value.cos-color{border-color:var(--cos)}.value.tan-color{border-color:var(--tan)}.value strong{display:block;font-size:14px}.math{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;white-space:nowrap;font-family:"Times New Roman",serif;font-size:22px;line-height:1.15;min-height:42px}.frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;align-items:stretch;margin:0 2px;font-size:.9em}.num{border-bottom:1.5px solid currentColor;padding:0 4px 2px}.den{padding:2px 4px 0}.root{display:inline-flex;align-items:baseline}.radicand{border-top:1.4px solid currentColor;padding:0 2px;margin-left:-1px}.hint{font-size:13px;color:var(--muted);margin-top:12px}.table-wrap{overflow-x:auto;padding-bottom:6px}table{border-collapse:separate;border-spacing:0;width:100%;min-width:595px;table-layout:fixed}th,td{text-align:center;border-right:1px solid var(--line);border-bottom:1px solid var(--line);height:78px;padding:3px}thead th{height:48px;background:#f5f7fa}th:first-child{width:55px;border-left:1px solid var(--line)}thead th{border-top:1px solid var(--line)}td button,th button{width:100%;border:0;background:transparent;padding:4px;border-radius:6px}td button{min-height:66px}th button{font-size:14px;padding:4px}.selected{background:#fff4d6!important;box-shadow:inset 0 0 0 1px #e9c676}.hidden-value{color:#8b97a8;font-size:22px}.undefined{font:12px/1.45 system-ui,sans-serif;white-space:normal}.correct{background:#e7f5ed!important}.wrong{background:#fff0f0!important}.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:13px;margin:14px 0}.lesson{background:#f6f8fc;padding:15px;border-radius:12px;margin-top:16px;font-size:14px}.lesson strong{color:#253d60}.practice{margin-top:18px;border-top:1px solid var(--line);padding-top:18px}.choices{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}.choices button{min-height:65px}.feedback{min-height:28px;font-size:14px;line-height:1.6}.practice-actions{display:flex;gap:8px;flex-wrap:wrap}.progress{font-size:13px;color:var(--muted)}[hidden]{display:none!important}footer{padding:10px 28px 28px;text-align:center;color:var(--muted);font-size:12px}@media(max-width:1100px){.layout{grid-template-columns:1fr 1.2fr}.card{padding:16px}header,main{padding-left:18px;padding-right:18px}.layout{grid-template-columns:minmax(300px,.85fr) minmax(0,1.2fr)}}@media(max-width:900px){.layout{grid-template-columns:1fr}header,main{padding:16px}.topbar{gap:12px}.modes{width:100%}.modes button{flex:1;padding:8px;font-size:14px}.graph{max-height:430px}.choices{grid-template-columns:repeat(3,1fr)}}
+
+/* One shared study surface keeps the circle, table and answer pad together. */
+header,main{max-width:1460px;padding:14px 22px}header{padding-bottom:0}h1{font-size:27px;margin:4px 0}.intro{font-size:14px}.topbar{margin-bottom:12px}.modes{flex-shrink:0}.modes button{white-space:nowrap}.layout{grid-template-columns:minmax(340px,.8fr) minmax(0,1.35fr);gap:0;background:white;border:1px solid var(--line);border-radius:18px;padding:6px}.card{border:0;box-shadow:none;border-radius:0;padding:14px}.circle-panel{border-right:1px solid var(--line)}h2{font-size:17px;margin-bottom:8px}.graph{max-width:500px;margin:auto}.graph-guide{font-size:12px;color:var(--muted);line-height:1.5;margin:7px 0}.value>.approx{font-size:22px!important}.decimal{font-size:14px;color:var(--muted);min-height:26px;display:flex;align-items:center;justify-content:center}.decimal .math{font-size:16px;min-height:26px}.values{margin-top:8px;gap:6px}.value{padding:8px 4px}.value>.math{font-size:32px;min-height:54px}.controls{margin-top:10px;border-top:1px solid var(--line);padding-top:6px}.controls summary{font-size:13px;cursor:pointer;min-height:32px;line-height:32px}.slider-label{margin-top:0;font-size:12px}input[type=range]{height:30px;margin:0}.angles{grid-template-columns:repeat(9,1fr);gap:3px}.angles button{padding:3px;font-size:12px;min-height:44px}.toggles{gap:10px;margin:6px 0;font-size:13px}.toggles label{min-height:36px}.hint{margin-top:5px;font-size:12px}.table-panel>#modeHelp{margin-bottom:8px}table{min-width:595px}th,td{height:70px}td button{min-height:60px}th:first-child{position:sticky;left:0;z-index:1;background:#f5f7fa}.table-wrap{padding-bottom:0}.practice{margin-top:8px;padding-top:8px}.practice h2{font-size:17px;margin:0}.choices{grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;margin:9px 0 5px}.choices button{min-height:58px;padding:3px}.feedback{min-height:24px;font-size:13px;margin:4px 0}.practice-actions{gap:5px}.practice-actions button{font-size:12px;padding:6px 9px}.lesson{margin-top:8px;padding:10px;font-size:13px}.lesson .math{font-size:19px;min-height:34px}.legend{margin:8px 0;font-size:12px}.reference{background:#f0edf9}.active-cell{color:inherit!important;outline:3px solid #ba8008!important;outline-offset:-3px;background:#fff0c0!important}.wrong-answer{display:block;font:10px system-ui,sans-serif;color:var(--sin)}.table-guide{margin-top:8px}footer{padding:12px;font-size:11px}button:disabled{opacity:.5;cursor:default}
+@media(max-width:1100px){header,main{padding-left:14px;padding-right:14px}.layout{grid-template-columns:minmax(310px,.72fr) minmax(0,1.28fr)}.card{padding:10px}.angles{grid-template-columns:repeat(5,1fr)}}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.circle-panel{border-right:0;border-bottom:1px solid var(--line)}.graph{max-width:480px;max-height:none}.angles{grid-template-columns:repeat(9,1fr)}.modes{width:auto}.topbar{gap:8px}.circle-panel .values{max-width:520px;margin:8px auto}.choices{grid-template-columns:repeat(7,minmax(0,1fr))}.controls{max-width:650px;margin:8px auto}}
+@media(min-width:700px) and (max-width:900px){.layout{grid-template-columns:minmax(260px,.72fr) minmax(0,1.28fr)}.circle-panel{border-right:1px solid var(--line);border-bottom:0}.angles{grid-template-columns:repeat(5,1fr)}.choices{grid-template-columns:repeat(5,minmax(0,1fr))}.card{padding:9px}.value>.math{font-size:28px}}
+@media(max-width:540px){header,main{padding:10px}h1{font-size:23px}.intro{font-size:12px}.topbar{margin-bottom:8px}.modes{width:100%}.modes button{min-height:44px}.layout{padding:0}.card{padding:10px}.angles{grid-template-columns:repeat(5,1fr)}.choices{grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}.choices button{min-height:52px}.choices .math{font-size:21px}.practice h2{font-size:15px}.value>.math{font-size:28px}.graph-guide{font-size:11px}body[data-mode=quiz] .graph{max-width:330px}body[data-mode=quiz] .table-guide{display:none}.practice-actions button{flex:1}}
+/* Numeric labels share the same exact-value renderer as cards and the table. */
+.graph-number{pointer-events:none;overflow:visible}.graph-number>div{height:100%;display:flex;align-items:center;justify-content:center}.graph-number .math{font-size:25px;min-height:48px}.graph-number .approx{font-size:18px}.graph-number .undefined{font-size:13px}
+</style>
+</head>
+<body data-mode="view">
+<header><div class="eyebrow">高校数学Ⅰ ・ 0°〜180°</div><h1>単位円で三角比マスター</h1><p class="intro">忘れても、円から考えよう。点を動かして、三角比の表とつなげる。</p></header>
+<main><div class="topbar"><nav class="modes" aria-label="学習モード"><button data-mode="view" aria-pressed="true">見る</button><button data-mode="hide" aria-pressed="false">隠して考える</button><button data-mode="quiz" aria-pressed="false">表を埋める</button></nav><label class="setting"><input id="rational" type="checkbox" checked>分母を有理化する</label></div>
+<div class="layout">
+<section class="card circle-panel" aria-label="単位円と操作">
+  <div class="heading"><h2>単位円から考える</h2><output class="angle" id="angle">30°</output></div>
+  <svg id="graph" class="graph" viewBox="0 0 500 400" role="img" aria-label="単位円。円周上の点をドラッグして角度を変更できます"></svg>
+  <p class="graph-guide">赤は sin（縦）、青は cos（横）、緑は tan（接線）。三角比の値は下のカードで確認できます。</p>
+  <div class="values" id="values"></div>
+  <details class="controls" open><summary>角度・表示を調整</summary>
+    <div class="slider-label"><label for="slider">角度 θ（点をドラッグしても変更できます）</label></div>
+    <input id="slider" type="range" min="0" max="180" step="1" value="30">
+    <div class="angles" id="angles"></div>
+    <div class="toggles"><label class="sin-color"><input type="checkbox" id="showSin" checked>sin 縦</label><label class="cos-color"><input type="checkbox" id="showCos" checked>cos 横</label><label class="tan-color"><input type="checkbox" id="showTan" checked>tan 接線</label></div>
+    <div class="toggles" id="hideControls" hidden><label><input id="hideLines" type="checkbox">補助線を隠す</label><label><input id="hideNumbers" type="checkbox" checked>数値を隠す</label></div>
+  </details>
+  <p class="hint" id="tanNote"></p>
+</section>
+<section class="card table-panel" aria-label="三角比の表と解答">
+  <h2>円を見ながら、表をつくる</h2>
+  <p class="hint" id="modeHelp">角度の見出しをタップすると、単位円も動きます。</p>
+  <div class="table-wrap"><table id="table" aria-label="代表角の三角比の表"></table></div>
+  <section class="practice" id="practice" hidden>
+    <div class="heading"><h2 id="question"></h2><span class="progress" id="progress"></span></div>
+    <div class="choices" id="choices" aria-label="選択中のセルに入れる値"></div>
+    <p class="feedback" id="feedback" role="status" aria-live="polite"></p>
+    <div class="practice-actions"><button id="next">次の空欄へ</button><button id="retry">間違えた問題を再挑戦</button><button id="restart">最初から</button></div>
+  </section>
+  <p class="hint table-guide">9つの角度をすべて掲載。収まらないときは表を左右にスワイプできます。</p>
+  <div class="legend"><span class="sin-color">sin θ = y座標</span><span class="cos-color">cos θ = x座標</span><span class="tan-color">tan θ = y座標 ÷ x座標</span></div>
+  <div class="lesson" id="lesson"></div>
+</section>
+</div></main><footer>半径1の円で、長さ・座標・符号を確かめよう。</footer>
+<script>
+'use strict';
+const angles=[0,30,45,60,90,120,135,150,180], ratios=['sin','cos','tan'];
+// Exact values use symbolic tokens; floating-point values are only used for drawing.
+const exact={sin:['0','h','r2h','r3h','1','r3h','r2h','h','0'],cos:['1','r3h','r2h','h','0','-h','-r2h','-r3h','-1'],tan:['0','r3t','1','r3','u','-r3','-1','-r3t','0']};
+const $=id=>document.getElementById(id);let theta=30,mode='view',revealed=new Set(),answers=new Map(),entries=new Map(),mistakes=new Set(),active='sin:0',retryQueue=null;
+const root=n=>`<span class="root">√<span class="radicand">${n}</span></span>`;
+const frac=(n,d)=>`<span class="frac"><span class="num">${n}</span><span class="den">${d}</span></span>`;
+function math(token){let negative=token.startsWith('-');let t=negative?token.slice(1):token;let v={h:frac('1','2'),r2h:$('rational').checked?frac(root(2),'2'):frac('1',root(2)),r3h:frac(root(3),'2'),r3t:$('rational').checked?frac(root(3),'3'):frac('1',root(3)),r3:root(3),u:'<span class="undefined">定義<br>されない</span>'}[t]??t;return `<span class="math">${negative?'−':''}${v}</span>`}
+function numeric(r,a){let rad=a*Math.PI/180;let v=r==='sin'?Math.sin(rad):r==='cos'?Math.cos(rad):Math.tan(rad);return Math.abs(v)<1e-10?0:v}
+function value(r,a,absolute=false){
+  const i=angles.indexOf(a);
+  if(i>=0){const token=exact[r][i];return math(absolute?token.replace('-',''):token)}
+  const v=absolute?Math.abs(numeric(r,a)):numeric(r,a);
+  return `<span class="math approx">≈ ${v.toFixed(3).replace('-','−')}</span>`;
+}
+function spoken(token){const negative=token.startsWith('-'),t=token.replace('-','');const names={h:'2分の1',r2h:$('rational').checked?'2分のルート2':'ルート2分の1',r3h:'2分のルート3',r3t:$('rational').checked?'3分のルート3':'ルート3分の1',r3:'ルート3',u:'定義されない'};return (negative?'マイナス':'')+(names[t]??t)}
+function setAngle(a){theta=Math.max(0,Math.min(180,Math.round(a)));render()}
+function draw(){
+  const svg=$('graph'),cx=230,cy=208,R=143,rad=theta*Math.PI/180,x=Math.cos(rad),y=Math.sin(rad),px=cx+R*x,py=cy-R*y;
+  const lines=!(mode==='hide'&&$('hideLines').checked);
+  const line=(x1,y1,x2,y2,attrs='')=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" ${attrs}/>`;
+  let s=`<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10" fill="#8391a4"/></marker></defs>`;
+  s+=line(35,cy,473,cy,'stroke="#8391a4" marker-end="url(#arrow)"')+line(cx,373,cx,22,'stroke="#8391a4" marker-end="url(#arrow)"');
+  s+=`<circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="#abb9cc" stroke-width="2"/><text x="478" y="204">x</text><text x="240" y="25">y</text><text x="215" y="228">O</text><text x="378" y="229">1</text><text x="73" y="229">−1</text><text x="240" y="63">1</text><text x="240" y="360">−1</text><text x="38" y="28">半径 1</text>`;
+  if(lines){
+    s+=line(cx+R,28,cx+R,372,'stroke="#9cb3a8" stroke-dasharray="5 5"')+`<text x="384" y="43">x = 1</text>`;
+    // Mirrored acute-angle point shows the same height and opposite horizontal coordinate.
+    if(theta>90&&theta<180){const qx=cx-R*x;s+=line(qx,py,qx,cy,'stroke="#aca2c9" stroke-dasharray="4 4"')+line(cx,cy,qx,py,'stroke="#aca2c9" stroke-dasharray="5 5"')+line(px,py,qx,py,'stroke="#aca2c9" stroke-dasharray="4 4"')+`<circle cx="${qx}" cy="${py}" r="5" fill="#aca2c9"/><text x="38" y="48">点線：${180-theta}° の位置</text>`;}
+    if($('showTan').checked&&theta!==90){
+      const t=numeric('tan',theta),limit=1.08,clipped=Math.abs(t)>limit,ty=cy-R*Math.max(-limit,Math.min(limit,t));
+      s+=line(cx,cy,cx+R*(clipped?limit/Math.abs(t):1),ty,'stroke="#18734e" stroke-width="1.5" stroke-dasharray="5 5"');
+      s+=line(cx+R,cy,cx+R,ty,'class="tan" stroke-width="7"');
+      if(clipped)s+=`<path d="M365 ${ty+(t>0?8:-8)} L373 ${ty} L381 ${ty+(t>0?8:-8)}" fill="none" stroke="#18734e" stroke-width="3"/>`;
+      else s+=`<circle cx="373" cy="${ty}" r="4" fill="#18734e"/>`;
+    }
+    s+=line(px,py,px,cy,'stroke="#b6c1cf" stroke-dasharray="4 4"');
+    if($('showCos').checked)s+=line(cx,cy,px,cy,'class="cos" stroke-width="7"');
+    if($('showSin').checked)s+=line(px,cy,px,py,'class="sin" stroke-width="7"');
+  }
+  s+=line(cx,cy,px,py,'stroke="#253d60" stroke-width="3"');
+  if(theta>0)s+=`<path d="M${cx+32} ${cy} A32 32 0 0 0 ${cx+32*x} ${cy-32*y}" fill="none" stroke="#d49922" stroke-width="2"/>`;
+  s+=`<text x="${cx+40*Math.cos(rad/2)}" y="${cy-40*Math.sin(rad/2)}">θ</text><circle cx="${px}" cy="${py}" r="22" fill="transparent"/><circle cx="${px}" cy="${py}" r="9" fill="#253d60" stroke="white" stroke-width="3"/><text x="${x<0?px+13:px-20}" y="${py+21}">P</text>`;
+  if(lines&&!(mode==='hide'&&$('hideNumbers').checked)){
+    const number=(r,lx,ly)=>`<foreignObject class="graph-number" data-ratio="${r}" x="${lx}" y="${ly}" width="104" height="52"><div xmlns="http://www.w3.org/1999/xhtml" class="${r}-color">${value(r,theta)}</div></foreignObject>`;
+    // Above P for shallow angles, left of the vertical segment for steep angles.
+    // Cos values stay below the x-axis on their side of the origin; tan stays right of x=1.
+    if($('showSin').checked){
+      let lx,ly;
+      if(theta<=60){lx=Math.min(265,px-52)-(theta>=50?20:0);ly=Math.max(8,py-76)}
+      else if(theta<=90){lx=112;ly=(cy+py)/2-26}
+      else if(theta<=150){lx=Math.max(0,px-116);ly=(cy+py)/2-26}
+      else {lx=Math.max(8,px-52);ly=py-76}
+      s+=number('sin',lx,ly);
+    }
+    if($('showCos').checked)s+=number('cos',theta<=90?Math.max(244,(cx+px)/2-52):Math.max(8,Math.min(112,(cx+px)/2-52)),246);
+    if($('showTan').checked){
+      const t=theta===90?0:numeric('tan',theta),mid=cy-R*Math.max(-1.08,Math.min(1.08,t))/2;
+      s+=number('tan',386,theta===90?92:theta<=90?Math.min(144,Math.max(66,mid-26)):Math.max(246,mid-26));
+    }
+  }
+  svg.innerHTML=s;
+}
+function render(){ $('angle').textContent=theta+'°';$('slider').value=theta;document.querySelectorAll('[data-angle]').forEach(b=>b.setAttribute('aria-pressed',Number(b.dataset.angle)===theta));draw();let hidden=mode==='hide'&&$('hideNumbers').checked;$('values').innerHTML=ratios.map(r=>{
+  const representative=angles.includes(theta),undefinedTan=r==='tan'&&theta===90;
+  const decimal=undefinedTan?'':numeric(r,theta).toFixed(3).replace('-','−');
+  return `<div class="value ${r}-color"><strong>${r} θ</strong>${hidden?'<span class="math">?</span>':value(r,theta)}${hidden?'<div class="decimal">値を考えてみよう</div>':representative&&!undefinedTan?`<div class="decimal">≈ ${decimal}</div>`:''}</div>`;
+}).join('');$('tanNote').textContent=theta===90?'90°では半径の直線と x = 1 が平行になるため、tan は定義されません。':Math.abs(numeric('tan',theta))>1.08?'tan の線分は表示範囲を超えています。矢印で続きを示し、実際の値は上に表示します。':'tan は半径を含む直線と x = 1 の交点の y 座標。第2象限では直線を反対側へ延長します。';$('lesson').hidden=hidden;$('lesson').innerHTML=theta===180?'<strong>180°：P は (−1, 0)。</strong><br>sin は 0、cos は −1、tan は 0。横の線分の長さは 1 ですが、左向きの座標は −1 です。':theta>90?'<strong>第2象限：sin は ＋、cos と tan は −。</strong><br>P は左上にあるので x 座標は負、y 座標は正。線分の長さは正ですが、座標と三角比には向きに応じた符号が付きます。':theta===90?'<strong>90°：P は (0, 1)。</strong><br>sin は 1、cos は 0。tan は 0 で割ることになるため定義されません。':'<strong>P の座標は (cos θ, sin θ)。</strong><br>半径は 1 なので、横の座標が cos、縦の座標が sin です。30°・60°は辺の比 1：√3：2、45°は 1：1：√2 の三角形から考えられます。';if([30,45,60,120,135,150].includes(theta)){
+  const a=theta>90?180-theta:theta,b=180-a;
+  $('lesson').innerHTML=`<strong>${a}° ↔ ${b}°：同じ高さ、左右対称</strong><br><span class="sin-color">sin ${a}° = sin ${b}° = ${value('sin',a)}</span><br><span class="cos-color">cos ${a}° = ${value('cos',a)}、cos ${b}° = ${value('cos',b)}</span><br><span class="tan-color">tan ${a}° = ${value('tan',a)}、tan ${b}° = ${value('tan',b)}</span><br>${a===45?'45°の三角形は 1：1：√2。':'30°・60°の三角形は 1：√3：2。'} 半径1に合わせて考えよう。第2象限では sin は＋、cos・tan は−。`;
+}renderTable();if(mode==='quiz')renderQuiz();}
+function renderTable(){ const reference=theta>90&&theta<180?180-theta:theta>0&&theta<90?180-theta:null; $('table').innerHTML=`<thead><tr><th>θ</th>${angles.map(a=>`<th class="${a===theta?'selected':a===reference?'reference':''}"><button data-table-angle="${a}" aria-label="${a}度に変更">${a}°</button></th>`).join('')}</tr></thead><tbody>${ratios.map(r=>`<tr><th class="${r}-color">${r}</th>${angles.map((a,i)=>{let k=r+':'+i,answer=answers.get(k),entered=entries.get(k),shown=mode==='view'||mode==='hide'&&revealed.has(k)||mode==='quiz'&&answer==='correct';return `<td class="${r}-color ${a===theta?'selected':a===reference?'reference':''} ${mode==='quiz'&&answer==='correct'?'correct':''} ${mode==='quiz'&&answer==='wrong'?'wrong':''}"><button data-cell="${k}" aria-label="${a}度の${r}${shown?'の値':'を考える'}" class="${mode==='quiz'&&active===k?'active-cell':''}" ${mode==='quiz'?`aria-pressed="${active===k}"`:''}>${shown?math(exact[r][i]):mode==='quiz'&&entered?math(entered)+'<span class="wrong-answer">もう一度</span>':'<span class="hidden-value">?</span>'}</button></td>`}).join('')}</tr>`).join('')}</tbody>`;}
+function renderQuiz(){let [r,i]=active.split(':');i=Number(i);$('question').textContent=`選択中：${r} ${angles[i]}°`;;$('progress').textContent=`${[...answers.values()].filter(a=>a==='correct').length} / 27 正解`;$('choices').innerHTML=['0','h','r2h','r3h','1','r3t','r3','-h','-r2h','-r3h','-1','-r3t','-r3','u'].map(t=>`<button data-choice="${t}" aria-label="${spoken(t)}" >${math(t)}</button>`).join('');$('retry').disabled=mistakes.size===0;document.querySelectorAll('[data-choice]').forEach(b=>b.disabled=answers.get(active)==='correct');const cell=document.querySelector(`[data-cell="${active}"]`),wrap=document.querySelector('.table-wrap');if(cell){const c=cell.getBoundingClientRect(),w=wrap.getBoundingClientRect();if(c.right>w.right)wrap.scrollLeft+=c.right-w.right+4;else if(c.left<w.left+55)wrap.scrollLeft-=w.left+55-c.left+4;}}
+function next(){let pool=retryQueue??ratios.flatMap(r=>angles.map((_,i)=>r+':'+i));let k=pool.find(k=>answers.get(k)!=='correct');if(k){active=k;theta=angles[Number(k.split(':')[1])];$('feedback').textContent='';render()}else{$('feedback').textContent=retryQueue?'間違えた問題をすべて解き直せました！':'27個すべて正解！単位円から値を考えられるか、隠してもう一度確認しよう。';retryQueue=null}}
+document.querySelector('.modes').addEventListener('click',e=>{let b=e.target.closest('[data-mode]');if(!b)return;mode=b.dataset.mode;document.body.dataset.mode=mode;if(mode==='quiz'){theta=angles[Number(active.split(':')[1])];if(matchMedia('(max-width:540px)').matches)document.querySelector('.controls').open=false;}document.querySelectorAll('[data-mode]').forEach(n=>n.setAttribute('aria-pressed',n===b));$('hideControls').hidden=mode!=='hide';$('practice').hidden=mode!=='quiz';$('modeHelp').textContent=mode==='hide'?'値は隠れています。セルをタップして確認し、もう一度タップすると隠せます。':mode==='quiz'?'セルをタップ → すぐ下の選択肢で解答。正解は表に残ります。': '角度の見出しをタップすると、単位円も動きます。';render()});$('angles').innerHTML=angles.map(a=>`<button data-angle="${a}">${a}°</button>`).join('');$('angles').addEventListener('click',e=>{let b=e.target.closest('[data-angle]');if(b)setAngle(Number(b.dataset.angle))});$('slider').addEventListener('input',e=>setAngle(Number(e.target.value)));['rational','showSin','showCos','showTan','hideLines','hideNumbers'].forEach(id=>$(id).addEventListener('change',render));$('table').addEventListener('click',e=>{let b=e.target.closest('button');if(!b)return;if(b.dataset.tableAngle!==undefined)return setAngle(Number(b.dataset.tableAngle));let k=b.dataset.cell;if(!k)return;theta=angles[Number(k.split(':')[1])];if(mode==='hide'){revealed.has(k)?revealed.delete(k):revealed.add(k)}if(mode==='quiz'){active=k;$('feedback').textContent=''}render()});$('choices').addEventListener('click',e=>{let b=e.target.closest('[data-choice]');if(!b)return;let [r,i]=active.split(':'),ok=b.dataset.choice===exact[r][Number(i)];if(answers.get(active)==='correct')return;entries.set(active,b.dataset.choice);answers.set(active,ok?'correct':'wrong');if(ok){mistakes.delete(active);$('feedback').textContent='正解！次の空欄へ進もう。'}else{mistakes.add(active);$('feedback').textContent='もう一度考えてみよう。P の横・縦の座標と、符号を確かめよう。同じ問題に再挑戦できます。'}render()});$('next').addEventListener('click',next);$('retry').addEventListener('click',()=>{retryQueue=[...mistakes];retryQueue.forEach(k=>{answers.delete(k);entries.delete(k)});next()});$('restart').addEventListener('click',()=>{answers.clear();entries.clear();mistakes.clear();retryQueue=null;active='sin:0';theta=0;$('feedback').textContent='';render()});let dragging=false;function pointerAngle(e){let p=$('graph').createSVGPoint();p.x=e.clientX;p.y=e.clientY;p=p.matrixTransform($('graph').getScreenCTM().inverse());let a=Math.atan2(208-p.y,p.x-230)*180/Math.PI;if(a<0)a=p.x<230?180:0;let nearest=angles.reduce((best,v)=>Math.abs(v-a)<Math.abs(best-a)?v:best,0);setAngle(Math.abs(nearest-a)<3?nearest:a)}$('graph').addEventListener('pointerdown',e=>{if(e.button!==0)return;dragging=true;$('graph').setPointerCapture(e.pointerId);pointerAngle(e);e.preventDefault()});$('graph').addEventListener('pointermove',e=>{if(dragging){pointerAngle(e);e.preventDefault()}});['pointerup','pointercancel','lostpointercapture'].forEach(t=>$('graph').addEventListener(t,()=>dragging=false));render();
+
+// Record one visit per page load without waiting for the response or retrying.
+try {
+  fetch('https://script.google.com/macros/s/AKfycbxssCIHsD-N97SHxNC_GN0ihYeC0qy-lb-EY0KmSs6Gnztaph1sITMerLVEnNWOGkYc/exec?app=unit-circle-trig', {
+    method: 'GET',
+    mode: 'no-cors',
+    cache: 'no-store',
+    credentials: 'omit',
+    keepalive: true,
+  }).catch(() => {});
+} catch {
+  // Access logging must never interrupt learning.
+}
+
+</script>
+</body></html>
